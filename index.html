@@ -1,0 +1,48 @@
+!DOCTYPE html>
+<!-- Struktur på sidan. Visar sol, planeter och info-panel. -->
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Solaris</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>SOLSYSTEMET</h1>
+    <p>SOLARIS</p>
+</header>
+
+<div class="sun" aria-hidden="true"></div>
+
+<main id="main" role="main">
+    <section id="solarSystem" aria-label="Sol och planeter">
+        <div id="loading" class="loading">Laddar planeter…</div>
+    </section>
+
+    <div id="error" class="hidden" role="alert" aria-live="polite">
+        <p id="errorText">Kunde inte hämta planeter.</p>
+        <div class="error-controls">
+            <button id="retryBtn">Försök igen</button>
+        </div>
+    </div>
+</main>
+
+<aside id="planetInfo" class="hidden" aria-hidden="true" role="region" aria-labelledby="infoTitle">
+    <h2 id="infoTitle" class="visually-hidden">Planetinformation</h2>
+</aside>
+
+<footer>
+    <p></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,153 @@
+:root {
+    --sun-size: 520px; /* Storleken på solen */
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    background: url("./images/background.png") center / cover no-repeat;
+}
+
+/* Header */
+header {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    text-align: center;
+    z-index: 5;
+}
+
+/* Göm header när info visas */
+body.showing-info header {
+    display: none;
+}
+
+/* Solen */
+.sun {
+    position: fixed;
+    left: -260px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--sun-size);
+    height: var(--sun-size);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 35% 50%,
+        #fff3b0 0%,
+        #fbc02d 45%,
+        #e6a700 65%,
+        rgba(230,167,0,0) 85%
+    );
+    clip-path: inset(0 0 0 50%);
+    opacity: 0.9;
+    z-index: 0;
+}
+
+/* Solen blir blå när info visas */
+body.showing-info .sun {
+    background: radial-gradient(
+        circle at 35% 50%,
+        #9fc5ff 0%,
+        #5f8fe6 40%,
+        #355c9a 65%,
+        rgba(53,92,154,0) 85%
+    );
+}
+
+/* Container för planeter */
+#solarSystem {
+    display: flex;
+    align-items: center;
+    gap: 42px;
+    margin-left: clamp(220px, calc(var(--sun-size) * 0.56 + 24px), 460px);
+    margin-top: 260px;
+    position: relative;
+    z-index: 3;
+}
+
+/* Planeter */
+.planet {
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.planet:hover {
+    transform: scale(1.1); /* Zoom-effekt när man hovrar */
+}
+
+/* Enskilda planeters storlek och färg */
+.merkurius { width: 40px; height: 40px; background: #8c7853; }
+.venus     { width: 70px; height: 70px; background: #ffc649; }
+.jorden    { width: 73px; height: 73px; background: #4a90e2; }
+.mars      { width: 50px; height: 50px; background: #e27b58; }
+.jupiter   { width: 150px; height: 150px; background: #c88b3a; }
+.saturnus  { width: 140px; height: 140px; background: #f4d47f; }
+.uranus    { width: 100px; height: 100px; background: #4fd0e7; }
+.neptunus  { width: 95px; height: 95px; background: #4166f5; }
+
+/* Info-panelen som visas när man klickar */
+#planetInfo {
+    display: none;
+    height: 100vh;
+    padding-left: 35%;
+    padding-top: 140px;
+}
+
+/* Visa info-panelen */
+body.showing-info #planetInfo {
+    display: block;
+}
+
+/* Kort info-kort */
+.info-card {
+    max-width: 720px;
+}
+
+.info-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+}
+
+.info-card em {
+    letter-spacing: 6px;
+    color: #fbc02d;
+}
+
+/* Avdelare i info-kort */
+.divider {
+    height: 1px;
+    background: rgba(255,255,255,0.25);
+    margin: 24px 0;
+}
+
+/* Grid för planetens detaljer */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 32px;
+}
+
+.label {
+    color: #fbc02d;
+    font-weight: 600;
+}
+
+/* Tillbaka-knapp */
+.back-btn {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    background: none;
+    border: 1px solid rgba(255,255,255,0.5);
+    color: white;
+    padding: 6px 14px;
+    cursor: pointer;
+}
